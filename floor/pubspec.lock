@@ -193,10 +193,12 @@ packages:
   floor_annotation:
     dependency: "direct main"
     description:
-      path: "../floor_annotation"
-      relative: true
-    source: path
-    version: "0.10.0"
+      path: floor_annotation
+      ref: update_code_gen
+      resolved-ref: "97b5001467af928f1f82826edd798648d0eb793a"
+      url: "git@github.com:thanhnamitit/floor.git"
+    source: git
+    version: "0.8.0"
   floor_generator:
     dependency: "direct dev"
     description:

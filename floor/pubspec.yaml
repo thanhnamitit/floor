@@ -14,7 +14,10 @@ dependencies:
   sqflite: ^1.3.1+1
   sqflite_common_ffi: ^1.1.1
   floor_annotation:
-    path: ../floor_annotation/
+    git:
+      url: git@github.com:thanhnamitit/floor.git
+      ref: update_code_gen
+      path: floor_annotation
   meta: ^1.2.3
   flutter:
     sdk: flutter
