@@ -18,6 +18,10 @@ class DatabaseBuilderWriter extends Writer {
       ..type = refer('String')
       ..modifier = FieldModifier.final$);
 
+    final passwordField = Field((builder) => builder
+      ..name = '_password'
+      ..type = refer('String'));
+
     final migrationsField = Field((builder) => builder
       ..name = '_migrations'
       ..type = refer('List<Migration>')
@@ -45,6 +49,18 @@ class DatabaseBuilderWriter extends Writer {
         ..name = 'migrations'
         ..type = refer('List<Migration>'))));
 
+    final addPasswordMethod = Method((builder) => builder
+      ..name = 'addPassword'
+      ..returns = refer(databaseBuilderName)
+      ..body = const Code('''
+        this._password = password;
+        return this;
+      ''')
+      ..docs.add('/// Adds password to the builder.')
+      ..requiredParameters.add(Parameter((builder) => builder
+        ..name = 'password'
+        ..type = refer('String'))));
+
     final addCallbackMethod = Method((builder) => builder
       ..name = 'addCallback'
       ..returns = refer(databaseBuilderName)
@@ -71,6 +87,7 @@ class DatabaseBuilderWriter extends Writer {
           path,
           _migrations,
           _callback,
+          _password
         );
         return database;
       '''));
@@ -79,12 +96,14 @@ class DatabaseBuilderWriter extends Writer {
       ..name = databaseBuilderName
       ..fields.addAll([
         nameField,
+        passwordField,
         migrationsField,
         callbackField,
       ])
       ..constructors.add(constructor)
       ..methods.addAll([
         addMigrationsMethod,
+        addPasswordMethod,
         addCallbackMethod,
         buildMethod,
       ]));
