@@ -15,7 +15,7 @@ dependencies:
   sqflite_common_ffi: ^1.1.1
   floor_annotation:
     git:
-      url: git@github.com:thanhnamitit/floor.git
+      url: https://github.com/thanhnamitit/floor.git
       ref: update_code_gen
       path: floor_annotation
   meta: ^1.2.3
